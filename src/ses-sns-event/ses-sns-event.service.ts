@@ -32,12 +32,12 @@ export class SesSnsEventService {
     return processedEvent;
   }
 
-  // Private methods to encapsulate specific processing logic
-  private checkVerdict(verdict: { status: string }): boolean {
+  // Single Responsibility Principle: Each private method has a single, well-defined task
+  private checkVerdict(verdict: Verdict): boolean {
     return verdict.status === 'PASS';
   }
 
-  private checkDnsVerdict(receipt: SesMessage['receipt']): boolean {
+  private checkDnsVerdict(receipt: DnsVerdict): boolean {
     return (
       this.checkVerdict(receipt.spfVerdict) &&
       this.checkVerdict(receipt.dkimVerdict) &&
