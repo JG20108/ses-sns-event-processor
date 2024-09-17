@@ -1,19 +1,8 @@
 export class SesSnsEventDto {
   Records: {
-    EventSource: string;
-    EventVersion: string;
-    Sns: {
-      Type: string;
-      MessageId: string;
-      TopicArn: string;
-      Subject: string;
-      Message: string;
-      Timestamp: string;
-      SignatureVersion: string;
-      Signature: string;
-      SigningCertUrl: string;
-      UnsubscribeUrl: string;
-    };
+    eventVersion: string;
+    eventSource: string;
+    ses: SesMessage;
   }[];
 }
 
@@ -37,6 +26,7 @@ export class SesMessage {
     dmarcVerdict: {
       status: string;
     };
+    dmarcPolicy: string;
     action: {
       type: string;
       topicArn: string;
