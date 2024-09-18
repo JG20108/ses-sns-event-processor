@@ -1,22 +1,13 @@
+// Single Responsibility Principle: This DTO is responsible for defining the structure of the incoming SES-SNS event
 export class SesSnsEventDto {
   Records: {
-    EventSource: string;
-    EventVersion: string;
-    Sns: {
-      Type: string;
-      MessageId: string;
-      TopicArn: string;
-      Subject: string;
-      Message: string;
-      Timestamp: string;
-      SignatureVersion: string;
-      Signature: string;
-      SigningCertUrl: string;
-      UnsubscribeUrl: string;
-    };
+    eventVersion: string;
+    eventSource: string;
+    ses: SesMessage;
   }[];
 }
 
+// Single Responsibility Principle: This class represents the structure of an SES message
 export class SesMessage {
   receipt: {
     timestamp: string;
@@ -37,6 +28,7 @@ export class SesMessage {
     dmarcVerdict: {
       status: string;
     };
+    dmarcPolicy: string;
     action: {
       type: string;
       topicArn: string;
